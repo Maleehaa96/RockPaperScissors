@@ -82,6 +82,7 @@ function updateComputerChoiceUI(compChoice){
      
      let current = document.createElement('div');
 
+        
      switch (compChoice){
         case 0:
             current.textContent = "Rock";
@@ -157,80 +158,57 @@ function decideWinner(playerSelection, compSelection){
     switch(compSelection){
         case 0:
             if(playerSelection == 2){
-                alert("You selected scissor and Computer selected rock..you LOSEE this round! :(");
+                alert("COMP: ROCK \n PLAYER: SCISSOR \n COMPUTER WINS");
                 compStreak++;
                 updateComputerScoreUI();
                 return;
             }  
+            break;
         case 1:
             if(playerSelection == 0){
-                alert("You selected rock and Computer selected paper..you LOSEE this round! :( + !!compSelect " + compSelection + "Playerselect "+playerSelection);
+                alert("COMP: PAPER \n PLAYER: ROCK \n COMPUTER WINS");
                 compStreak++;
                 updateComputerScoreUI();
                 return;
-            }   
+            } 
+            break;  
         case 2: 
             if(playerSelection == 1){
-                alert("You selected paper and Computer selected scissor..you LOSEE this round! :(");
+                alert("COMP: SCISSOR \n PLAYER: PAPER \n COMPUTER WINS");
                 compStreak++;
                 updateComputerScoreUI();
                 return;
             }
+            break;
     }
 
     switch (playerSelection){
         case 0:
             if(compSelection == 2){
-                alert("You selected rock and Computer selected scissor..you WIN this round! :)");
+                alert("COMP: SCISSOR \n PLAYER: ROCK \n PLAYER WINS");
                 playerStreak++;
                 updatePlayerScoreUI();
                 return;
             }
+            break;
         case 1:
             if(compSelection == 0){
-                alert("You selected paper and Computer selected rock..you WIN this round! :)");
+                alert("COMP: ROCK \n PLAYER: PAPER \n PLAYER WINS");
                 playerStreak++;
                 updatePlayerScoreUI();
                 return;
             }
+            break;
         case 2:
             if(compSelection == 1){
-              alert("You selected scissor and Computer selected paper..you WIN this round! :) + playerSelect " + playerSelection  + " computerSelect " +compSelection);
+              alert("COMP: PAPER \n PAPER: SCISSOR \n PLAYER WINS");
               playerStreak++;
               updatePlayerScoreUI();
               return;
             }
-
-
-
+            break;
 
     }
-
-    /*
-    switch(playerSelection){
-        case 0:
-            if(compSelection == 2){
-                alert("You selected rock and Computer selected scissor..you WIN this round! :)");
-                playerStreak++;
-                updatePlayerScoreUI();
-                break;
-            }
-        case 1:
-            if(compSelection == 0){
-                alert("You selected paper and Computer selected rock..you WIN this round! :)");
-                playerStreak++;
-                updatePlayerScoreUI();
-                break;
-            }  
-        case 2:
-            if(compSelection == 1){
-              alert("You selected scissor and Computer selected paper..you WIN this round! :) + playerSelect " + playerSelection  + " computerSelect " +compSelection);
-              playerStreak++;
-              updatePlayerScoreUI();
-              break;
-            }
-    }
-    */
 
     playerSelection = "";
     compSelection = "";
