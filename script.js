@@ -29,14 +29,14 @@ scissor.addEventListener("click",e => Button(e));
 
 
 // player choice update
-pChoice = document.querySelector('.pChoice');
+pChoice = document.querySelector('.pContainer');
 let pPrev = document.createElement('div');
 pPrev.textContent =" ";
 pPrev.style.textAlign="center";
 pChoice.append(pPrev);
 
 //comp choice update
-cChoice = document.querySelector('.cChoice');
+cChoice = document.querySelector('.cContainer');
 let cPrev = document.createElement('div');
 cPrev.textContent = " ";
 cPrev.style.textAlign="center";
@@ -102,13 +102,56 @@ function updateComputerChoiceUI(compChoice){
      
 }
 
+function deleteChildren(parent){
+    
+    while (parent.firstChild) {
+        
+        parent.removeChild(parent.firstChild);
+    }
+    
+}
+
+function clearGame(){
+
+    //reset score
+    cScore.textContent = 0;
+    pScore.textContent = 0;
+
+    //clear playerChoices
+    deleteChildren(pChoice);
+
+    //clear compChoices
+    deleteChildren(cChoice);
+
+}
+
+function checkGameWinner(){
+    let win = 0;
+    if(playerStreak >= 3) {
+        alert("THE PLAYER WINS!!");
+        win = 1;
+    }
+    
+    if(compStreak >= 3) {
+        alert("THE COMPUTER WINS!!");
+        win = 1;
+    }
+
+    if(win){
+        clearGame();
+    }
+
+}
+
 function updatePlayerScoreUI(){
     pScore.textContent = playerStreak;
+    checkGameWinner();
 
 }
 
 function updateComputerScoreUI(){
     cScore.textContent = compStreak;
+    checkGameWinner();
 }
 
 function getComputerChoice(){
