@@ -1,6 +1,7 @@
 body {
    margin: 0%;
    color: white;
+   background-color: #36454f;;
 }
 
 
@@ -41,7 +42,7 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-evenly;
-    background-color: red;
+    background-color: #36454f;;
     height: 30%;
     
 }
@@ -57,7 +58,7 @@ button{
 .choice{
     display: flex;
     justify-content: space-around;
-    background-color: yellow; 
+    
     height: 120%;
     align-items: flex-start;
     justify-items: center;

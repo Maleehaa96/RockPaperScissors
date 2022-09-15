@@ -1,10 +1,4 @@
 
-//0 = rock
-//1 = paper
-//2 = scissor 
-
-
-let winner = false;
 let playerStreak = 0;
 let compStreak = 0;
 
@@ -50,10 +44,10 @@ function Button (e ){
     let response = e.srcElement.className;
     let playerResponse = getPlayerChoice(e.srcElement.className);
     let computerResponse = getComputerChoice();
+   
     updatePlayerChoiceUI(playerResponse);
     updateComputerChoiceUI(computerResponse);
     decideWinner(playerResponse, computerResponse);
-    
 
 }
 
@@ -61,6 +55,7 @@ function Button (e ){
 function updatePlayerChoiceUI(playerChoice){
    
     let current = document.createElement('div');
+    
     switch (playerChoice){
         case 0:
             current.textContent = "Rock";
@@ -72,18 +67,18 @@ function updatePlayerChoiceUI(playerChoice){
             current.textContent = "Scissor";
             break;
      }
-    
+
     current.style.textAlign="center";
     pChoice.insertBefore(current,pPrev);
     pPrev = current;
 }
 
-function updateComputerChoiceUI(compChoice){
+function updateComputerChoiceUI(compChoice) {
      
      let current = document.createElement('div');
 
         
-     switch (compChoice){
+     switch (compChoice) {
         case 0:
             current.textContent = "Rock";
             break;
@@ -99,16 +94,19 @@ function updateComputerChoiceUI(compChoice){
     cChoice.insertBefore(current,cPrev);
     cPrev = current;
 
-     
 }
 
 function deleteChildren(parent){
-    
+
     while (parent.firstChild) {
         
         parent.removeChild(parent.firstChild);
     }
+ 
     
+    
+   
+
 }
 
 function clearGame(){
@@ -119,14 +117,25 @@ function clearGame(){
 
     //clear playerChoices
     deleteChildren(pChoice);
+    pPrev.textContent = "";
+    pChoice.append(pPrev);
 
     //clear compChoices
     deleteChildren(cChoice);
+    cPrev.textContent = "";
+    cChoice.append(cPrev);
+
+    playerStreak = 0;
+    compStreak = 0;
+
+    
 
 }
 
 function checkGameWinner(){
-    let win = 0;
+
+    let win=0;
+    
     if(playerStreak >= 3) {
         alert("THE PLAYER WINS!!");
         win = 1;
@@ -157,17 +166,17 @@ function updateComputerScoreUI(){
 function getComputerChoice(){
     let result = Math.floor(Math.random() * 3); // results in 0,1,2
     if(result == 0){
-        console.log("Computer chose  rock");
+       
     }
     else if (result == 1){
-        console.log("Computer chose paper");
+       
 
     }
     else if(result == 2){
-        console.log("Computer chose scissor");
+       
     }
     else{
-        console.log("Oops something went wrong!");a
+        
     }
 
     return result;
@@ -176,16 +185,16 @@ function getComputerChoice(){
 
 function getPlayerChoice(response){
        
-        if(response =="rock"){
-                console.log("you entered rock");
+        if(response =="rock") {
+              
                 return 0
         }
-        if(response == "paper"){
-                console.log("you entered paper");
+        if(response == "paper") {
+               
                 return 1;
         }
-        if (response ==  "scissor"){
-                console.log("you entered scissor");
+        if (response ==  "scissor") {
+              
                 return 2;
         }
  
@@ -258,33 +267,4 @@ function decideWinner(playerSelection, compSelection){
 
 }
 
-function playRound(){
 
-    while(playerStreak < 3 & compStreak <3){
-        
-        decideWinner();
-        
-        
-        if(playerStreak ==3){
-            alert("WINNER WINNER CHICKEN DINNER!!");
-
-        }
-        if(compStreak == 3){
-            alert("She was looking kinda dumb with a shape of an L on her forehead")
-        }
-
-
-    }
-
-}
-
-function game(){
-
-    playRound();
-}
-
-
-//game();
-
-//need to keep track of when there is a win
-//use a win 
